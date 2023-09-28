@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Tiles/Button_Player.png" type="Texture" id=1]
+[ext_resource path="res://Inputs/Button.gd" type="Script" id=2]
+[ext_resource path="res://Audio/SwitchSound.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15, 6 )
+
+[node name="Button" type="Area2D"]
+collision_layer = 0
+collision_mask = 9
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 10 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="SwitchSound" parent="." instance=ExtResource( 3 )]
+[connection signal="area_entered" from="." to="." method="_on_Button_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_Button_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_Button_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Button_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="update_voltage" binds= [ true ]]

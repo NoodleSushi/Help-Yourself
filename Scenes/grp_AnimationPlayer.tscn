@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/grp_AnimationPlayer.gd" type="Script" id=1]
+
+[node name="grp_AnimationPlayer" type="AnimationPlayer"]
+playback_process_mode = 2
+script = ExtResource( 1 )

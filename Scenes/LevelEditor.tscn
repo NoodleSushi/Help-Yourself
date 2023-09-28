@@ -1,0 +1,368 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/LevelEditor.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Tiles/lever.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Editor/icon_clear.svg" type="Texture" id=3]
+[ext_resource path="res://Assets/Editor/icon_rotate_left.svg" type="Texture" id=4]
+[ext_resource path="res://Assets/Editor/icon_mirror_x.svg" type="Texture" id=5]
+[ext_resource path="res://Assets/Editor/icon_mirror_y.svg" type="Texture" id=6]
+[ext_resource path="res://Fonts/VCR.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 39
+font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "INIT"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "New Anim"
+length = 5.0
+step = 0.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 3.25, 3.75 ),
+"transitions": PoolRealArray( 0.15932, 1, 0.16, 0.15932 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:rect_position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -256, -0.25, 0, 0.0460214, 221.182, -32, -0.269893, -11.0179, 0.433964, 10.5821, 32, -0.25, 0, 0.25, 0, 256, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 3.25, 3.75 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:rect_position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[node name="LevelEditor" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="ColorRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.298039, 0.298039, 0.298039, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewer" type="Panel" parent="."]
+margin_top = 88.0
+margin_right = 64.0
+margin_bottom = 152.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Viewer"]
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+rect_pivot_offset = Vector2( 25.6, 25.6 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TransposeButton" type="Button" parent="Viewer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+toggle_mode = true
+
+[node name="Transpose" type="TextureButton" parent="Viewer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlipHButton" type="Button" parent="Viewer"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 24.0
+toggle_mode = true
+
+[node name="FlipH" type="TextureButton" parent="Viewer"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 24.0
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlipVButton" type="Button" parent="Viewer"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 24.0
+toggle_mode = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlipV" type="TextureButton" parent="Viewer"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 24.0
+texture_normal = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResetTransform" type="TextureButton" parent="Viewer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 24.0
+margin_bottom = 24.0
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Viewer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 30.0
+margin_right = 128.0
+margin_bottom = 168.0
+text = "Placeholder"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector" type="TabContainer" parent="."]
+anchor_right = 1.0
+margin_right = -102.0
+margin_bottom = 88.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="ScrollContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -102.0
+margin_bottom = 150.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
+margin_right = 102.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Test" type="Button" parent="Buttons/VBoxContainer"]
+margin_right = 102.0
+margin_bottom = 20.0
+text = "Test Level"
+
+[node name="Clip" type="Button" parent="Buttons/VBoxContainer"]
+margin_top = 24.0
+margin_right = 102.0
+margin_bottom = 44.0
+text = "Copy Level"
+
+[node name="Paste" type="Button" parent="Buttons/VBoxContainer"]
+margin_top = 48.0
+margin_right = 102.0
+margin_bottom = 68.0
+text = "Paste Level"
+
+[node name="Clear" type="Button" parent="Buttons/VBoxContainer"]
+margin_top = 72.0
+margin_right = 102.0
+margin_bottom = 92.0
+text = "Clear Level"
+
+[node name="ToggleButtons" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -100.0
+margin_top = 128.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ToggleButtons"]
+margin_right = 100.0
+margin_bottom = 14.0
+text = "Toggle Views:"
+
+[node name="Props" type="Button" parent="ToggleButtons"]
+margin_top = 18.0
+margin_right = 100.0
+margin_bottom = 38.0
+toggle_mode = true
+text = "Props"
+
+[node name="StaticBodies" type="Button" parent="ToggleButtons"]
+margin_top = 42.0
+margin_right = 100.0
+margin_bottom = 62.0
+toggle_mode = true
+text = "Static Bodies"
+
+[node name="Inputs" type="Button" parent="ToggleButtons"]
+margin_top = 66.0
+margin_right = 100.0
+margin_bottom = 86.0
+toggle_mode = true
+text = "Inputs"
+
+[node name="Outputs" type="Button" parent="ToggleButtons"]
+margin_top = 90.0
+margin_right = 100.0
+margin_bottom = 110.0
+toggle_mode = true
+text = "Ouputs"
+
+[node name="Player" type="Button" parent="ToggleButtons"]
+margin_top = 114.0
+margin_right = 100.0
+margin_bottom = 134.0
+toggle_mode = true
+text = "Player"
+
+[node name="Entities" type="Button" parent="ToggleButtons"]
+margin_top = 138.0
+margin_right = 100.0
+margin_bottom = 158.0
+toggle_mode = true
+text = "Entities"
+
+[node name="LogicGates" type="Button" parent="ToggleButtons"]
+margin_top = 162.0
+margin_right = 100.0
+margin_bottom = 182.0
+toggle_mode = true
+text = "Logic Gates"
+
+[node name="Wires" type="Button" parent="ToggleButtons"]
+margin_top = 186.0
+margin_right = 100.0
+margin_bottom = 206.0
+toggle_mode = true
+text = "Wires"
+
+[node name="Back" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 128.0
+text = "Back to Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 256.0
+margin_right = 256.0
+custom_fonts/font = SubResource( 1 )
+text = "LEVEL HAS BEEN COPIED TO YOUR CLIPBOARD.
+
+YOU CAN PASTE IT AS TEXT AND SHARE IT WITH ANYBODY YOU LIKE :D"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+autoplay = "INIT"
+anims/INIT = SubResource( 2 )
+"anims/New Anim" = SubResource( 3 )
+
+[node name="LevelLoader" type="ScrollContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -111.0
+margin_top = -96.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="VBoxContainer" parent="LevelLoader"]
+margin_right = 111.0
+size_flags_horizontal = 3
+[connection signal="mouse_entered" from="." to="." method="_on_LevelEditor_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_LevelEditor_mouse_exited"]
+[connection signal="pressed" from="Viewer/Transpose" to="." method="_on_Transpose_pressed"]
+[connection signal="pressed" from="Viewer/FlipH" to="." method="_on_FlipH_pressed"]
+[connection signal="pressed" from="Viewer/FlipV" to="." method="_on_FlipV_pressed"]
+[connection signal="pressed" from="Viewer/ResetTransform" to="." method="_on_ResetTransform_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/Test" to="." method="_on_Test_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/Clip" to="." method="_on_Clip_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/Paste" to="." method="_on_Paste_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/Clear" to="." method="_on_Clear_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
